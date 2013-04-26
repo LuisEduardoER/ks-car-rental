@@ -1,3 +1,4 @@
+
 body {
 font-size: 10pt;
 font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -6,19 +7,12 @@ line-height: 14pt;
 padding-left: 5pt;
 padding-right: 5pt;
 padding-top: 5pt;
+bgcolor: #A9F5E1;
 }
 h1 {
 font: 14pt Verdana, Geneva, Arial, Helvetica, sans-serif;
 font-weight: bold;
 line-height: 20pt;
-}
-p.subheader {
-font-weight: bold;
-color: #593d87;
-}
-img {
-padding: 3pt;
-float: right;
 }
 a {
 text-decoration: none;
@@ -29,10 +23,84 @@ color: #8094d6;
 a:hover, a:active {
 color: #FF9933;
 }
+div#top{
+text-align: right;
+}
 div.footer {
 font-size: 9pt;
 font-style: italic;
 line-height: 12pt;
 text-align: center;
 padding-top: 30pt;
+}
+#top a
+    {
+      font-family: verdana, "bitstream vera sans", Arial, 'Lucida Grande', Helvetica, Geneva, sans-serif;
+      color:#000;
+      font-weight:normal;
+      font-size:10px;
+      text-decoration:none;
+    }
+#top a:hover
+    {
+      color:#000;
+      font-weight:normal;
+      font-size:10px;
+      text-decoration:underline;
+    }
+/*  =================================
+    =NAVIGATION STYLES
+    ================================= */
+#nav{
+    list-style:none;
+    font-weight:bold;
+    margin-bottom:10px;
+    float:left;
+    width:100%;
+}
+#nav li{
+    float:left;
+    margin-right:10px;
+    position:relative;
+}
+#nav a{
+    display:block;
+    padding:5px;
+    color:#fff;
+    background:#8C7575;
+    text-decoration:none;
+}
+#nav a:hover{
+    color:#fff;
+    background:#AB7E7E;
+    text-decoration:underline;
+}
+
+/*--- DROPDOWN ---*/
+#nav ul{
+    background:#fff; 
+    background:rgba(255,255,255,0); 
+    list-style:none;
+    position:absolute;
+    left:-9999px;
+}
+#nav ul li{
+    padding-top:1px;
+    float:none;
+}
+#nav ul a{
+    white-space:nowrap; 
+}
+#nav li:hover ul{ 
+    left:0;
+}
+#nav li:hover a{ 
+    background:#C67C7C;
+    text-decoration:underline;
+}
+#nav li:hover ul a{ 
+    text-decoration:none;
+}
+#nav li:hover ul li a:hover{ /* Here we define the most explicit hover states--what happens when you hover each individual link. */
+    background:#333;
 }

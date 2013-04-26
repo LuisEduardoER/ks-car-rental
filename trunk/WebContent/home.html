@@ -1,21 +1,298 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
 <html>
-	<head>
-	<style>
-<link rel="stylesheet" type="text/css" href="main.css"/> 
-body {background-color:#F5DA81;}
-</style>
-	
+<head>
+<link rel="stylesheet" href="CSS/main.css" />
 <title>KS Car Rental Rental Cars at Low Rates</title>
-<meta name="description" content="Reserve a car rental from KS Car Rental. Choose from more than 6,000 rental car locations at major airports and neighborhood locations. Rental car classes include economy cars, luxury car rental and more." />
-<meta name="keywords" content="car rental, rental cars, car rentals, rental car, rent car" />
+<meta name="description"
+	content="Reserve a car rental from KS Car Rental. Choose from more than 6,000 rental car locations at major airports and neighborhood locations. Rental car classes include economy cars, luxury car rental and more." />
+<meta name="keywords"
+	content="car rental, rental cars, car rentals, rental car, rent car" />
 </head>
-<body onLoad="javascript:init_navigation();">
-<div id="bodyContent">
-                <h3>
-                			Make a car rental reservation
-                </h3>
-<div class=”footer”>Copyright - All rights reserved. Used with permission.</div>			
-        </body>
+<body onLoad="javascript:init_navigation();" bgcolor="#A9F5E1">
+	<div id="top">
+		<a href="http://aboutus.ksrental.com/" link="About-Us">About Us</a> <span>&nbsp;|&nbsp;</span>
+		<a href="" link="Contact-Us">Contact Us</a> <span>&nbsp;|&nbsp;</span>
+		<a href="http://help.ksrental.com" link="Help">Help</a>
+	</div>
+	<div id="navigation">
+		<ul id="nav">
+			<li id="active">
+				<div>
+					<a href="Rent-a-Car" link="Rent-a-Car">Rent a Car</a>
+				</div>
+				<ul id="activeUL">
+					<li><a href="" link="Vehicles">Vehicles</a></li>
+					<li><a href="" link="Locations">Rental Locations</a></li>
+					<li><a href="" link="Print-Your-Receipt">Print Your
+							Receipt</a></li>
+					<li><a href="" link="Cancel-Reservation">Cancel A
+							Reservation</a></li>
+				</ul>
+			</li>
+			<li class="secondary">
+				<div>
+					<a href="" link="Return-a-Car">Return a Car</a>
+				</div>
+				<ul id="activeUL">
+					<li><a href="" link="Fault-Report">Fault Report</a></li>
+					<li><a href="" link="View-Cost">View Cost</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id="bodyContent">
+		<table cellpadding="0" cellspacing="0" width="500" border="0"
+			id="home" bgcolor="#F6D8CE">
+			<form name="homePageForm" id="theHomePageForm" method="post"
+				action="">
+				<tr>
+					<td colspan="4">
+						<h1>Make a car rental reservation</h1>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table cellpadding="0" cellspacing="0" border="0">
+
+							<tr>
+								<td valign="top" align="left" class="inlineh2">
+									<h2>Pick Up Location</h2>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" align="left"><input type="text"
+									name="searchCriteria" size="25" value="" id="searchCriteria"
+									class="step1"></td>
+							</tr>
+							<tr>
+								<td valign="top" align="left">City, State, Zip Code,</td>
+							</tr>
+
+						</table>
+					</td>
+				</tr>
+			<tr>
+				<td>
+					<table cellpadding="0" cellspacing="0" border="0">
+						<!-- start date restriction -->
+						<tr>
+
+							<h2>Pick Up Date &amp; Time</h2>
+							<br>
+						</tr>
+						<tr>
+							<td colspan="4" valign="middle" align="left">
+								<fieldset id="startDate" class="datepicker">
+									<select name="startDateMonth" id="startDateMonth"
+										class="yearmonth"><option value="201304"
+											selected="selected">Apr</option>
+										<option value="201305">May</option>
+										<option value="201306">Jun</option>
+										<option value="201307">Jul</option>
+										<option value="201308">Aug</option>
+										<option value="201309">Sep</option>
+										<option value="201310">Oct</option>
+										<option value="201311">Nov</option>
+										<option value="201312">Dec</option>
+										<option value="201401">Jan</option>
+										<option value="201402">Feb</option>
+										<option value="201403">Mar</option>
+										<option value="201404">Apr-14</option></select> <input type="text"
+										name="startDateInput" maxlength="2" size="2" value="24"
+										id="startDateInput" class="day"> <a
+										id="calendarIconStart" href="#"><img
+										alt="Calendar to pick car rental date"
+										src="Images/ico_calendar.gif" /></a> <select name="startDateTime"
+										class="time"><option value="0001">Midnight</option>
+										<option value="0030">12:30 am</option>
+										<option value="0100">1:00 am</option>
+										<option value="0130">1:30 am</option>
+										<option value="0200">2:00 am</option>
+										<option value="0230">2:30 am</option>
+										<option value="0300">3:00 am</option>
+										<option value="0330">3:30 am</option>
+										<option value="0400">4:00 am</option>
+										<option value="0430">4:30 am</option>
+										<option value="0500">5:00 am</option>
+										<option value="0530">5:30 am</option>
+										<option value="0600">6:00 am</option>
+										<option value="0630">6:30 am</option>
+										<option value="0700">7:00 am</option>
+										<option value="0730">7:30 am</option>
+										<option value="0800">8:00 am</option>
+										<option value="0830">8:30 am</option>
+										<option value="0900">9:00 am</option>
+										<option value="0930">9:30 am</option>
+										<option value="1000">10:00 am</option>
+										<option value="1030">10:30 am</option>
+										<option value="1100">11:00 am</option>
+										<option value="1130">11:30 am</option>
+										<option value="1200" selected="selected">Noon</option>
+										<option value="1230">12:30 pm</option>
+										<option value="1300">1:00 pm</option>
+										<option value="1330">1:30 pm</option>
+										<option value="1400">2:00 pm</option>
+										<option value="1430">2:30 pm</option>
+										<option value="1500">3:00 pm</option>
+										<option value="1530">3:30 pm</option>
+										<option value="1600">4:00 pm</option>
+										<option value="1630">4:30 pm</option>
+										<option value="1700">5:00 pm</option>
+										<option value="1730">5:30 pm</option>
+										<option value="1800">6:00 pm</option>
+										<option value="1830">6:30 pm</option>
+										<option value="1900">7:00 pm</option>
+										<option value="1930">7:30 pm</option>
+										<option value="2000">8:00 pm</option>
+										<option value="2030">8:30 pm</option>
+										<option value="2100">9:00 pm</option>
+										<option value="2130">9:30 pm</option>
+										<option value="2200">10:00 pm</option>
+										<option value="2230">10:30 pm</option>
+										<option value="2300">11:00 pm</option>
+										<option value="2330">11:30 pm</option></select>
+									<p id="calendarStartDate"></p>
+								</fieldset>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" valign="top" align="left" class="inlineh2">
+								<h2>Return Date &amp; Time&nbsp;&nbsp;</h2>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" valign="top" align="left">
+								<fieldset id="endDate" class="datepicker">
+									<select name="endDateMonth" id="endDateMonth" class="yearmonth"><option
+											value="201304" selected="selected">Apr</option>
+										<option value="201305">May</option>
+										<option value="201306">Jun</option>
+										<option value="201307">Jul</option>
+										<option value="201308">Aug</option>
+										<option value="201309">Sep</option>
+										<option value="201310">Oct</option>
+										<option value="201311">Nov</option>
+										<option value="201312">Dec</option>
+										<option value="201401">Jan</option>
+										<option value="201402">Feb</option>
+										<option value="201403">Mar</option>
+										<option value="201404">Apr-14</option></select> <input type="text"
+										name="endDateInput" maxlength="2" size="2" value="25"
+										id="endDateInput" class="day"> <a id="calendarIconEnd"
+										href="#"><img alt="Calendar to pick car rental date"
+										src="Images/ico_calendar.gif" /></a> <select name="endDateTime"
+										id="endDateTime" class="time"><option value="0001">Midnight</option>
+										<option value="0030">12:30 am</option>
+										<option value="0100">1:00 am</option>
+										<option value="0130">1:30 am</option>
+										<option value="0200">2:00 am</option>
+										<option value="0230">2:30 am</option>
+										<option value="0300">3:00 am</option>
+										<option value="0330">3:30 am</option>
+										<option value="0400">4:00 am</option>
+										<option value="0430">4:30 am</option>
+										<option value="0500">5:00 am</option>
+										<option value="0530">5:30 am</option>
+										<option value="0600">6:00 am</option>
+										<option value="0630">6:30 am</option>
+										<option value="0700">7:00 am</option>
+										<option value="0730">7:30 am</option>
+										<option value="0800">8:00 am</option>
+										<option value="0830">8:30 am</option>
+										<option value="0900">9:00 am</option>
+										<option value="0930">9:30 am</option>
+										<option value="1000">10:00 am</option>
+										<option value="1030">10:30 am</option>
+										<option value="1100">11:00 am</option>
+										<option value="1130">11:30 am</option>
+										<option value="1200" selected="selected">Noon</option>
+										<option value="1230">12:30 pm</option>
+										<option value="1300">1:00 pm</option>
+										<option value="1330">1:30 pm</option>
+										<option value="1400">2:00 pm</option>
+										<option value="1430">2:30 pm</option>
+										<option value="1500">3:00 pm</option>
+										<option value="1530">3:30 pm</option>
+										<option value="1600">4:00 pm</option>
+										<option value="1630">4:30 pm</option>
+										<option value="1700">5:00 pm</option>
+										<option value="1730">5:30 pm</option>
+										<option value="1800">6:00 pm</option>
+										<option value="1830">6:30 pm</option>
+										<option value="1900">7:00 pm</option>
+										<option value="1930">7:30 pm</option>
+										<option value="2000">8:00 pm</option>
+										<option value="2030">8:30 pm</option>
+										<option value="2100">9:00 pm</option>
+										<option value="2130">9:30 pm</option>
+										<option value="2200">10:00 pm</option>
+										<option value="2230">10:30 pm</option>
+										<option value="2300">11:00 pm</option>
+										<option value="2330">11:30 pm</option></select>
+									<p id="calendarEndDate"></p>
+								</fieldset>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table cellpadding="0" cellspacing="0" border="0" width="340">
+						<tr>
+							<td colspan="5" valign="top" align="left"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table cellpadding="0" cellspacing="0" border="0" width="315">
+						<tr>
+							<td colspan="2" align="left"></td>
+						</tr>
+						<!-- vehicle restricton -->
+						<tr>
+							<td colspan="2" class="inlineh2">&nbsp;
+								<h2>Vehicle Class</h2> &nbsp;&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" align="left"><select
+								name="carClassDrop"><option value="">Show me
+										everything&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+									<option value="ECAR">Economy</option>
+									<option value="CCAR">Compact</option>
+									<option value="ICAR">Intermediate</option>
+									<option value="SCAR">Standard</option>
+									<option value="FCAR">Full Size</option>
+									<option value="PCAR">Premium</option>
+									<option value="LCAR">Luxury</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td valign="middle" align="left">
+								<table cellpadding="0" cellspacing="0" border="0">
+									<tr>
+										<td valign="middle" align="left" class="inlineh2"><h3>
+												Renter's Age</h3></td>
+										<td valign="middle" align="left"><select name="ageDrop"><option
+													value="25" selected>25 and Up</option>)
+												<option value="21">21 to 24</option>)
+												<option value="18">18 to 20</option>)
+										</select></td>
+									</tr>
+								</table>
+							</td>
+							<td valign="middle" align="right"><label
+								class="primaryAction right" for="search"><input
+									type="submit" value="Search" id="search" name="search"></label>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+</div>
+</body>
 </html>
