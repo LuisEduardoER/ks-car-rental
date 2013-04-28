@@ -10,15 +10,15 @@
 </head>
 <body onLoad="javascript:init_navigation();" bgcolor="#A9F5E1">
 	<div id="top">
-		<a href="http://aboutus.ksrental.com/" link="About-Us">About Us</a> <span>&nbsp;|&nbsp;</span>
-		<a href="" link="Contact-Us">Contact Us</a> <span>&nbsp;|&nbsp;</span>
+		<a href="http://localhost:8080/CarRental/AboutUs.html" link="About-Us">About Us</a> <span>&nbsp;|&nbsp;</span>
+		<a href="http://localhost:8080/CarRental/ContactUs.html" link="Contact-Us">Contact Us</a> <span>&nbsp;|&nbsp;</span>
 		<a href="http://help.ksrental.com" link="Help">Help</a>
 	</div>
 	<div id="navigation">
 		<ul id="nav">
 			<li id="active">
 				<div>
-					<a href="Rent-a-Car" link="Rent-a-Car">Rent a Car</a>
+					<a href="http://localhost:8080/CarRental/LoginPage.html" link="Rent-a-Car">Rent a Car</a>
 				</div>
 				<ul id="activeUL">
 					<li><a href="" link="Vehicles">Vehicles</a></li>
@@ -261,13 +261,15 @@
 							<td colspan="2" valign="top" align="left"><select
 								name="carClassDrop"><option value="">Show me
 										everything&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-									<option value="ECAR">Economy</option>
+									<option value="TCAR">Truck</option>
 									<option value="CCAR">Compact</option>
 									<option value="ICAR">Intermediate</option>
 									<option value="SCAR">Standard</option>
 									<option value="FCAR">Full Size</option>
 									<option value="PCAR">Premium</option>
-									<option value="LCAR">Luxury</option>
+									<option value="CVCAR">Cargo Van</option>
+									<option value="SUCAR">Sport Utility</option>
+									<option value="MVCAR">Mini Van</option>
 							</select></td>
 						</tr>
 						<tr>
