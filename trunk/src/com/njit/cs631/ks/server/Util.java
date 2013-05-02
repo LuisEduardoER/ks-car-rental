@@ -51,17 +51,17 @@ public class Util {
   Connection dbConnection = null;
   Boolean isOpened = false;
   
-  public void open(String sqlUrl, String dbName, String userName, String password) throws SQLException {
-		String url = "jdbc:mysql://" + SQLURL;
+  public void open() throws SQLException {
+		String url = SQLURL;
 
 		try {
-			Class.forName(this.DRIVER);
+			Class.forName(DRIVER);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new SQLException("My SQL Driver not found");
 		}
 		
-		dbConnection = (Connection) DriverManager.getConnection(url + "/" + DBNAME, USERNAME, PASSWORD);
+		dbConnection = (Connection) DriverManager.getConnection(url + DBNAME, USERNAME, PASSWORD);
 		isOpened = true;
 	}
   
@@ -120,7 +120,7 @@ public class Util {
 			{
 			//TODO: throw exception
 			this.close();
-			this.open(SQLURL, DBNAME, USERNAME, PASSWORD);
+			this.open();
 			return execute(query, values);
 			}
 		
