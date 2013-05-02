@@ -1,5 +1,6 @@
 package com.njit.cs631.ks.server;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,6 +49,7 @@ public class RegisterCustomerServlet extends HttpServlet{
 			// this variables will contain all the data
 			// we want to collect in this request
 			String firstName, lastName, SSN, street, city, state, zip, primaryPhoneNo, alternatePhoneNo, discount;
+			Customer customer = new Customer();
 
 			try {
 
@@ -72,7 +74,6 @@ public class RegisterCustomerServlet extends HttpServlet{
 					throw new IllegalArgumentException("SSN not provided");
 				}			
 
-				Customer customer = new Customer();
 				customer.setFirstName(firstName);
 				customer.setLastName(lastName);
 				customer.setSSN(SSN);
@@ -83,7 +84,8 @@ public class RegisterCustomerServlet extends HttpServlet{
 				customer.setZip(zip);
 				
 				// register user
-				Customer.createCustomer(customer);
+				customer.getUtil().open();
+				customer.createCustomer(customer);
 
 				// create response
 				responsePayload = new RegisterRegisterPayload();
@@ -107,6 +109,11 @@ public class RegisterCustomerServlet extends HttpServlet{
 				responseStatus = Response.Status.ERROR;
 				responseMessage = "Sorry, you cannot register an existing user!";
 
+			}catch (SQLException e) {
+				// this may be thrown by our User class
+				responseStatus = Response.Status.ERROR;
+				responseMessage = "Sorry, there was problem with DB operation!";
+
 			} catch (Exception e) {
 				responseStatus = Response.Status.ERROR;
 				responseMessage = "Sorry, something went really wrong.";
@@ -115,12 +122,13 @@ public class RegisterCustomerServlet extends HttpServlet{
 				responseMessage += "\n ";
 				responseMessage += e.getMessage();
 				responseMessage += "\n ";
-				responseMessage += e.getStackTrace().toString();
+				responseMessage += e.getCause();
 
 			} finally {
 				// this will ALWAYS be executed, so we can be sure that
 				// our client will get at least SOME decent answer
 				// even if something goes wrong during the process
+				customer.getUtil().close();
 				resp.getWriter().print(
 						new Response(responseStatus, responseMessage,
 								responsePayload).toJson());

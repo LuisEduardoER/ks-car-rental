@@ -30,6 +30,7 @@ out.println("Successfully connected to " + "MySQL server using TCP/IP...");
 connection.close();
 }
 catch(Exception ex){
+ex.printStackTrace();
 %>
 </font>
 <font size="+3" color="red"></b>

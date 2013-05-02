@@ -2,6 +2,7 @@ package com.njit.cs631.ks.customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import com.njit.cs631.ks.server.Util;
 
@@ -41,13 +42,12 @@ public class Customer {
 		/** The discount. */
 		private Double discount;
 
-		private static Util util;
+		private Util util;
 		/**
 		 * Instantiates a new customer.
 		 */
 		public Customer() {
-		
-			new Util();
+			util = new Util();
 		}
 
 		/**
@@ -86,11 +86,11 @@ public class Customer {
 		}
 
 		public String getSSN() {
-			return SSN;
+			return this.SSN;
 		}
 
 		public void setSSN(String SSN) {
-			SSN = SSN;
+			this.SSN = SSN;
 		}
 
 		public String getPrimaryPhoneNo() {
@@ -155,24 +155,41 @@ public class Customer {
 		 * 
 		 * @param customer
 		 *            the customer
+		 * @throws SQLException 
 		 */
-		public static void createCustomer(Customer customer) throws CustomerAlreadyCreatedException {
+		public  void createCustomer(Customer customer) throws CustomerAlreadyCreatedException, SQLException, Exception{
 			if (customerExists(customer.getPrimaryPhoneNo())) {
 				throw new CustomerAlreadyCreatedException();
 			} else {
+				HashMap values = new HashMap<String, String>();
+				values.put("fName", customer.getFirstName());
+				values.put("LName", customer.getLastName());
+				values.put("SSN", customer.getSSN());
+				values.put("PrimaryPhoneNo", customer.getPrimaryPhoneNo());
+				values.put("AltPhoneNo", customer.getAlternatePhoneNo());
+				values.put("Street", customer.getStreet());
+				values.put("State", customer.getState());
+				values.put("City", customer.getCity());
+				values.put("Zip", customer.getZip());
+					util.insertEntity("Customer", values );
 				
 			}
 		}
 
 		
+		public Util getUtil() {
+			return util;
+		}
+
 		/**
 		 * Gets the customer.
 		 * 
 		 * @param primaryPhoneNo
 		 *            the primaryPhoneNo
 		 * @return the customer
+		 * @throws SQLException 
 		 */
-		public Customer getCustomer(String primaryPhoneNo) {
+		public Customer getCustomer(String primaryPhoneNo) throws SQLException {
 			ResultSet customerEntity = getCustomerEntity(primaryPhoneNo);
 			return toCustomer(customerEntity);
 		}
@@ -183,22 +200,24 @@ public class Customer {
 		 * @param primaryTelephoneNo
 		 *            the primary Telephone No
 		 * @return true, if successful
+		 * @throws SQLException 
 		 */
-		public static boolean customerExists(String primaryTelephoneNo) {
-			return getCustomerEntity(primaryTelephoneNo) != null;
+		public boolean customerExists(String primaryTelephoneNo) throws SQLException {
+			ResultSet result = null;
+			result = getCustomerEntity(primaryTelephoneNo);
+			if(result.next()){	
+			return true ;
+			}
+			else
+			return false;
 		}
 
 
-		private static ResultSet getCustomerEntity(String primaryTelephoneNo) {
+		private ResultSet getCustomerEntity(String primaryTelephoneNo) throws SQLException{
 			// TODO Auto-generated method stub
 			String[] values = {primaryTelephoneNo};
 			ResultSet result = null;
-			try {
-				result= util.selectEntity("customer", null, "primaryPhoneNo = ?", values);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				result= util.selectEntity("Customer", null, "PrimaryPhoneNo = ?", values);
 			return result;
 		}
 
@@ -208,10 +227,10 @@ public class Customer {
 		 * @param customerEntity
 		 *            the customer entity
 		 * @return the customer
+		 * @throws SQLException 
 		 */
-		private Customer toCustomer(ResultSet customerEntity) {
+		private Customer toCustomer(ResultSet customerEntity) throws SQLException {
 			Customer customer = new Customer();
-			try{
 			customer.setSSN((String) customerEntity.getString("SSN"));
 			customer.setFirstName((String) customerEntity.getString("FName"));
 			customer.setLastName((String) customerEntity.getString("LName"));
@@ -222,11 +241,6 @@ public class Customer {
 			customer.setState((String)customerEntity.getString("State"));
 			customer.setZip((String)customerEntity.getString("Zip"));
 			customer.setDiscount((Double)customerEntity.getDouble("Discount"));
-			
-			}
-			catch(SQLException sqlException){
-				sqlException.printStackTrace();
-			}
 			return customer;
 		}
 
