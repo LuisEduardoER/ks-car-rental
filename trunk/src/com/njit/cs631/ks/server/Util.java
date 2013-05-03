@@ -196,7 +196,60 @@ public class Util {
 		  return execute(sqlQuery, conditionArgs);
 			
 		}
+  
+  //Above method could be called as: 
+  /*
+   public ResultSet selectEntity(String tableName, String[] columnNames,String condition, String[] conditionArgs) throws SQLException {
+   	
+   	String[] conditions = { condition };
+   	selectEntity(tableName, columnNames, conditions, conditionArgs);
+   }
+   */
 
+  	public ResultSet selectEntity(String tableName, String[] columnNames,String[] conditions, String[] conditionArgs) throws SQLException {
+		//String []queryArgs = new String[columns.size()];
+		//queryArgs[0] = tableName;
+		
+	  String sqlQuery = "SELECT ";
+      if(columnNames != null)
+      {
+          for(int i=0;columnNames != null && i<columnNames.length;i++)
+          {
+              sqlQuery= sqlQuery+ columnNames[i];
+              if(i<columnNames.length-1)
+              {
+                  sqlQuery= sqlQuery+ ",";
+              }
+          }
+      }
+      else
+      {
+          sqlQuery = sqlQuery + "*";
+      }
+      
+      String conditionCmd = "WHERE";
+      
+      if(conditions != null)
+      {
+          for(int i=0;conditions != null && i<conditions.length;i++)
+          {
+        	  conditionCmd = conditionCmd + conditions[i];
+              if(i<conditions.length-1)
+              {
+            	  conditionCmd = conditionCmd + ",";
+              }
+          }
+      }
+      else
+      {
+    	  conditionCmd = "";
+      }
+      
+      sqlQuery = sqlQuery + " from " + tableName + conditionCmd;
+		
+	  return execute(sqlQuery, conditionArgs);
+		
+	}
 
  
 	/**
