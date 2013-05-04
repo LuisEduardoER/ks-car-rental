@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+import com.njit.cs631.ks.car.Class.ClassType;
 import com.njit.cs631.ks.customer.Customer;
 import com.njit.cs631.ks.customer.CustomerAlreadyCreatedException;
 import com.njit.cs631.ks.server.Util;
@@ -13,12 +14,12 @@ import com.njit.cs631.ks.server.Util;
  * Car.
  */
 public class Car {
-	/** The license plate. */
-	private String licensePlate;
+	/** The license state. */
+	private String licenseState;
 
 	/** The license number. */
 	private String licenseNo;
-
+	
 	/** The model name. */
 	private String modelName;
 
@@ -45,6 +46,37 @@ public class Car {
 
 	private Util util;
 
+	private String licensePlate;
+	
+	private int mileage;
+	
+	private boolean available;
+	
+	public int getMileage() {
+		return mileage;
+	}
+
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+
+	public void setUtil(Util util) {
+		this.util = util;
+	}
+
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
+	}
+
+	public String getLicensePlate() {
+		return licensePlate;
+	}
+
+	public void setLicensePlate(String licenseState, String licenseNo) {
+		this.licensePlate = licenseState + licenseNo;
+	}
+
+	
 	/**
 	 * Instantiates a new car.
 	 */
@@ -57,9 +89,10 @@ public class Car {
 	 * 
 	 * 
 	 */
-	public Car(String licensePlate, String licenseNo) {
-		this.setLicenseState(licensePlate);
+	public Car(String licenseState, String licenseNo) {
+		this.setLicenseState(licenseState);
 		this.setLicenseNo(licenseNo);
+		this.setLicensePlate(licenseState, licenseNo);
 		this.setModelName(modelName);
 		this.setYear(year);
 		this.setEngineCapacity(engineCapacity);
@@ -71,11 +104,11 @@ public class Car {
 	}
 
 	public String getLicenseState() {
-		return licensePlate;
+		return licenseState;
 	}
 
-	public void setLicenseState(String licensePlate) {
-		this.licensePlate = licensePlate;
+	public void setLicenseState(String licenseState) {
+		this.licenseState = licenseState;
 	}
 
 	public String getLicenseNo() {
@@ -154,17 +187,17 @@ public class Car {
 	 * Creates car.
 	 */
 
-	public void createCar(Car car) throws CarNotAvailableException,
+	/*public void createCar(Car car) throws CarNotAvailableException,
 	SQLException, Exception {
 		if (!carExists(car.getLicenseNo(), car.getLicenseState())) {
 			throw new CarNotAvailableException();
 		} else {
-			String[] colNames = { "LicensePlate", "LicenseNo", "ModelName",
+			String[] colNames = { "LicenseState", "LicenseNo", "ModelName",
 					"Year", "EngineCapacity", "TransmissionType", "NoOfDoors",
 					"HorsePower", "Image", "ClassType" };
-			String[] conditionArgs = { "LicensePlate", "LicenseNo" };
-			String[] conditions = { "LicenseNo = ?", "LicensePlate = ?" };
-			util.selectEntity("Car", colNames, conditions, conditionArgs);
+			String[] conditionArgs = { "LicenseState", "LicenseNo" };
+			String condition =  "LicenseNo = ? and LicenseState = ?" ;
+			util.selectEntity("Car", colNames, condition, conditionArgs);
 
 			HashMap values = new HashMap<String, String>();
 			values.put("licenseNo", car.getLicenseNo());
@@ -178,7 +211,7 @@ public class Car {
 			values.put("image", car.getImage());
 			values.put("classType", car.getClassType());
 		}
-	}
+	}*/
 
 	public Util getUtil() {
 		return util;
@@ -196,6 +229,7 @@ public class Car {
 		ResultSet carEntity = getCarEntity(licenseNo, licenseState);
 		return toCar(carEntity);
 	}
+	
 
 	/**
 	 * Car exists.
@@ -207,23 +241,36 @@ public class Car {
 	 * @throws SQLException
 	 */
 
-	public boolean carExists(String licenseNo, String licenseState)
+	/*public boolean carExists(String licenseNo, String licenseState)
 			throws SQLException {
 		ResultSet result = null;
-		result = getCarEntity(licenseNo, licenseState);
+		result = getOneCarEntity(licenseNo, licenseState);
 		if (result.next()) {
 			return true;
 		} else
 			return false;
-	}
+	}*/
 
-	private ResultSet getCarEntity(String licenseNo, String licenseState)
-			throws SQLException {
+	public Car getOneCar(ClassType classType2)throws SQLException {
 		// TODO Auto-generated method stub
-		String[] values = { licenseNo, licenseState };
-		String[] conditions = { "LicenseNo = ?", "LicensePlate = ?" };
+		String[] values = { classType2.toString() };
+		String condition =  "ClassType = ? and " ;
 		ResultSet result = null;
-		result = util.selectEntity("Car", null, conditions, values);
+		result = util.selectEntity("Car", null, condition, values);
+		Car car= null;
+		if(result!=null)
+		{
+			car = toCar(result);
+		}
+		return car;
+	}
+	
+	private ResultSet getCarEntity(String licenseNo, String licenseState)throws SQLException {
+		// TODO Auto-generated method stub
+		String[] values = { licenseNo , licenseState };
+		String condition =  "LicenseNo = ? and LicenseState = ?";
+		ResultSet result = null;
+		result = util.selectEntity("Car", null, condition, values);
 		return result;
 	}
 
@@ -248,7 +295,17 @@ public class Car {
 		car.setHorsePower((int) carEntity.getInt("HorsePower"));
 		car.setImage((String) carEntity.getString("Image"));
 		car.setClassType((String) carEntity.getString("ClassType"));
+		car.setAvailable((Boolean) carEntity.getBoolean("Available"));
+		car.setMileage((int) carEntity.getInt("Available"));
 		return car;
+	}
+
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 
 }
