@@ -206,7 +206,7 @@ public class Util {
    }
    */
 
-  	public ResultSet selectEntity(String tableName, String[] columnNames,String[] conditions, String[] conditionArgs) throws SQLException {
+  	/*public ResultSet selectEntity(String tableName, String[] columnNames,String[] conditions, String[] conditionArgs) throws SQLException {
 		//String []queryArgs = new String[columns.size()];
 		//queryArgs[0] = tableName;
 		
@@ -249,7 +249,7 @@ public class Util {
 		
 	  return execute(sqlQuery, conditionArgs);
 		
-	}
+	}*/
 
  
 	/**
