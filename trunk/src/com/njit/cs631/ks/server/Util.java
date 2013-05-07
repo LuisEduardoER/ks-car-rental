@@ -1,16 +1,4 @@
-// Copyright 2011, Google Inc. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+
 package com.njit.cs631.ks.server;
 
 import java.io.IOException;
@@ -197,61 +185,7 @@ public class Util {
 			
 		}
   
-  //Above method could be called as: 
-  /*
-   public ResultSet selectEntity(String tableName, String[] columnNames,String condition, String[] conditionArgs) throws SQLException {
-   	
-   	String[] conditions = { condition };
-   	selectEntity(tableName, columnNames, conditions, conditionArgs);
-   }
-   */
-
-  	/*public ResultSet selectEntity(String tableName, String[] columnNames,String[] conditions, String[] conditionArgs) throws SQLException {
-		//String []queryArgs = new String[columns.size()];
-		//queryArgs[0] = tableName;
-		
-	  String sqlQuery = "SELECT ";
-      if(columnNames != null)
-      {
-          for(int i=0;columnNames != null && i<columnNames.length;i++)
-          {
-              sqlQuery= sqlQuery+ columnNames[i];
-              if(i<columnNames.length-1)
-              {
-                  sqlQuery= sqlQuery+ ",";
-              }
-          }
-      }
-      else
-      {
-          sqlQuery = sqlQuery + "*";
-      }
-      
-      String conditionCmd = "WHERE";
-      
-      if(conditions != null)
-      {
-          for(int i=0;conditions != null && i<conditions.length;i++)
-          {
-        	  conditionCmd = conditionCmd + conditions[i];
-              if(i<conditions.length-1)
-              {
-            	  conditionCmd = conditionCmd + ",";
-              }
-          }
-      }
-      else
-      {
-    	  conditionCmd = "";
-      }
-      
-      sqlQuery = sqlQuery + " from " + tableName + conditionCmd;
-		
-	  return execute(sqlQuery, conditionArgs);
-		
-	}*/
-
- 
+  
 	/**
 	 * List the entities in JSON format.
 	 *

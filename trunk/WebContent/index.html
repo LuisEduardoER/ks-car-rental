@@ -1,49 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" href="CSS/main.css" />
-<title>KS Car Rental Rental Cars at Low Rates</title>
-<meta name="description"
-	content="Reserve a car rental from KS Car Rental. Choose from more than 6,000 rental car locations at major airports and neighborhood locations. Rental car classes include economy cars, luxury car rental and more." />
-<meta name="keywords"
-	content="car rental, rental cars, car rentals, rental car, rent car" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="CSS/style.css" />
+<title>KS Car Rental</title>
 </head>
-<body onLoad="javascript:init_navigation();" bgcolor="#A9F5E1">
-	<div id="top">
-		<a href="http://localhost:8080/CarRental/AboutUs.html" link="About-Us">About Us</a> <span>&nbsp;|&nbsp;</span>
-		<a href="http://localhost:8080/CarRental/ContactUs.html" link="Contact-Us">Contact Us</a> <span>&nbsp;|&nbsp;</span>
-		<a href="http://localhost:8080/CarRental/Help.html" link="Help">Help</a>
-	</div>
-	<div id="navigation">
-		<ul id="nav">
-			<li id="active">
-				<div>
-					<!-- based on the classtype chosen, display charges for that -->
-					<a href="http://localhost:8080/CarRental/classtype.html" link="Rent-a-Car">Rent a Car</a>
-				</div>
-				<ul id="activeUL">
-					<li><a href="" link="Vehicles">Vehicles</a></li>
-					<li><a href="" link="Locations">Rental Locations</a></li>
-					<li><a href="" link="Print-Your-Receipt">Print Your
-							Receipt</a></li>
-					<li><a href="" link="Cancel-Reservation">Cancel A
-							Reservation</a></li>
-				</ul>
-			</li>
-			<li class="secondary">
-				<div>
-					<a href="" link="Return-a-Car">Return a Car</a>
-				</div>
-				<ul id="activeUL">
-					<li><a href="" link="Fault-Report">Fault Report</a></li>
-					<li><a href="" link="View-Cost">View Cost</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<div id="bodyContent">
-		<table cellpadding="0" cellspacing="0" width="500" border="0"
-			id="home" bgcolor="#F6D8CE">
+
+<body>
+    <div id="page">
+      <div id="pagetop">
+		<h1>KS Car Rental</h1>
+        <div class="links">    	
+             <ul>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">ReturnCar</a></li>
+               	<li><a href="#">RentCar</a></li>
+           	   	<li><a href="#">Home</a></li>
+                
+            </ul>
+		
+        </div>
+     </div>
+        
+        <div id="header">   Reach the Road to success     </div>
+  
+<div id="main">
+	<div class="content">
+        	<div class="main_top">
+            	<h1>Home</h1>
+            </div>
+            
+           	<div class="main_body">
+             <table cellpadding="0" cellspacing="0" width="500" border="0"
+			id="home">
 			<form name="homePageForm" id="theHomePageForm" method="post"
 				action="">
 				<tr>
@@ -57,10 +48,9 @@
 					<table cellpadding="0" cellspacing="0" border="0">
 						<!-- start date restriction -->
 						<tr>
-
-							<h2>Pick Up Date &amp; Time</h2>
-							<br>
-						</tr>
+							<td colspan="4" valign="top" align="left" class="inlineh2">
+								<h2>Pick Up Date &amp; Time&nbsp;&nbsp;</h2>
+							</td>						</tr>
 						<tr>
 							<td colspan="4" valign="middle" align="left">
 								<fieldset id="startDate" class="datepicker">
@@ -214,32 +204,13 @@
 								</fieldset>
 							</td>
 						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table cellpadding="0" cellspacing="0" border="0" width="340">
 						<tr>
-							<td colspan="5" valign="top" align="left"></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table cellpadding="0" cellspacing="0" border="0" width="315">
-						<tr>
-							<td colspan="2" align="left"></td>
-						</tr>
-						<!-- vehicle restricton -->
-						<tr>
-							<td colspan="2" class="inlineh2">&nbsp;
-								<h2>Vehicle Class</h2> &nbsp;&nbsp;
+							<td colspan="4" valign="top" align="left">
+								<h2>Vehicle &amp; Class&nbsp;&nbsp;</h2>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" valign="top" align="left"><select
+							<td colspan="4" valign="top" align="left"><select
 								name="carClassDrop"><option value="">Show me
 										everything&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 									<option value="TCAR">Truck</option>
@@ -253,16 +224,38 @@
 									<option value="MVCAR">Mini Van</option>
 							</select></td>
 						</tr>
-								</table>
-							</td>
+						
+						</table>
+						</td>
+						</tr>
+						<tr> 
+						<td> &nbsp;
+						<br/></td></tr>
+				<tr>
+				<td>
+					<table cellpadding="0" cellspacing="0" border="0">
+							<tr>
 							<td valign="middle" align="right"><label
 								class="primaryAction right" for="search"><input
 									type="submit" value="Search" id="search" name="search"></label>
 							</td> 
 						</tr>
+						</table>
+						</td>
+						</tr>
 						</form>
+					
 					</table>
-				
-</div>
+			        
+			</div>
+            <div class="clear">&nbsp;</div>
+        </div>
+<div id="footer">
+        <p>copyright protected KS Car Rental</p>
+        </div>        
+        
+        
+        
+        </div>
 </body>
 </html>
