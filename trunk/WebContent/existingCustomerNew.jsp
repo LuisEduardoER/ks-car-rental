@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,36 +31,21 @@
 <div id="main">
 	<div class="content">
         	<div class="main_top">
-            	<h1>Contact Us</h1>
+            	<h1>Existing Customer</h1>
             </div>
-            <form action="contact.php" method="post">
-	Contact us:
-	<br>	
-	147 W 83rd St <br>
-	New York <br> 
-	NY 10024 <br>
-	Phone:(212) 362-0873
-	<br>
-	<br>
-	Contact us through email!!
-	<br>
-    Your name
-    <br>
-    <input type="text" name="cf_name">  
-    <br>  
-    Your e-mail    
-    <br>
-    <input type="text" name="cf_email">
-    <br>    
-    Message
-    <br>    
-    <textarea name="cf_message"></textarea>
-    <br>    
-    <input type="submit" value="Submit">
-    <input type="reset" value="Clear">
-</form>	
+            
+           	<div class="main_body">
+<h1>Please enter your primary phone number: </h1>
+	<FORM action="validateCustomerNew.jsp" method="post">
+		<P>
+			<LABEL for="phoneNo"> Phone Number </LABEL> <INPUT type="text" name="phoneNo"><BR>
+			<br> <INPUT type="submit" value="Submit">
+		</P>
+	</FORM>
+		</div>
 
-           	
+
+             	</div>
             <div class="clear">&nbsp;</div>
         </div>
 <div id="footer">
@@ -70,3 +57,4 @@
         </div>
 </body>
 </html>
+	

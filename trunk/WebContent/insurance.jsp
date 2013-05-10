@@ -29,36 +29,26 @@
 <div id="main">
 	<div class="content">
         	<div class="main_top">
-            	<h1>Contact Us</h1>
+            	<h1>Insurance Options</h1>
             </div>
-            <form action="contact.php" method="post">
-	Contact us:
-	<br>	
-	147 W 83rd St <br>
-	New York <br> 
-	NY 10024 <br>
-	Phone:(212) 362-0873
-	<br>
-	<br>
-	Contact us through email!!
-	<br>
-    Your name
-    <br>
-    <input type="text" name="cf_name">  
-    <br>  
-    Your e-mail    
-    <br>
-    <input type="text" name="cf_email">
-    <br>    
-    Message
-    <br>    
-    <textarea name="cf_message"></textarea>
-    <br>    
-    <input type="submit" value="Submit">
-    <input type="reset" value="Clear">
-</form>	
+            
+           	<div class="main_body">
 
-           	
+<h1> Choose your insurance type </h1>
+<form action="rentalInsuranceNew.jsp" method="post">
+		<button type="submit">Rental Insurance</button>
+	</form><br><br>
+	<form action="personalInsuranceNew.jsp" method="post">
+		<button type="submit">Personal Insurance</button>
+	</form><br><br>
+	<form action="creditcardInsuranceNew.jsp" method="post">
+		<button type="submit">Credit Card Insurance</button>
+	</form>
+
+		</div>
+
+
+             	</div>
             <div class="clear">&nbsp;</div>
         </div>
 <div id="footer">

@@ -24,6 +24,8 @@ public class Insurance {
 	
 	String ServicePhoneNo;
 	
+	String insuranceType;
+	
 	public Insurance(){
 	
 		util = new Util();
@@ -50,7 +52,7 @@ public class Insurance {
 	public void setType(InsType insType) {
 		this.type = insType;
 	}
-	private String PolicyNo;
+	private String policyNo;
 	public String getInsProviderName() {
 		return InsProviderName;
 	}
@@ -58,12 +60,22 @@ public class Insurance {
 		InsProviderName = insProviderName;
 	}
 	public String getPolicyNo() {
-		return PolicyNo;
+		return policyNo;
 	}
 	public void setPolicyNo(String policyNo) {
-		PolicyNo = policyNo;
+		this.policyNo = policyNo;
 	}
 	
+	
+	
+	public String getInsuranceType() {
+		return insuranceType;
+	}
+
+	public void setInsuranceType(String insuranceType) {
+		this.insuranceType = insuranceType;
+	}
+
 	public void createInsurance() throws CustomerAlreadyCreatedException, SQLException, Exception{
 					HashMap values = new HashMap<String, String>();
 					values.put("InsuranceProviderName", this.getInsProviderName()  );
