@@ -50,6 +50,8 @@ public class Car {
 	
 	private int mileage;
 	
+	
+	
 	private boolean available;
 	
 	public int getMileage() {
@@ -58,7 +60,9 @@ public class Car {
 
 	public void setMileage(int mileage) {
 		this.mileage = mileage;
-	}
+	}	
+
+	
 
 	public void setUtil(Util util) {
 		this.util = util;

@@ -29,36 +29,24 @@
 <div id="main">
 	<div class="content">
         	<div class="main_top">
-            	<h1>Contact Us</h1>
+            	<h1></h1>
             </div>
-            <form action="contact.php" method="post">
-	Contact us:
-	<br>	
-	147 W 83rd St <br>
-	New York <br> 
-	NY 10024 <br>
-	Phone:(212) 362-0873
+            
+           	<div class="main_body">
+			
+	<h1>Are you a returning customer??</h1>
+	<form action = "existingCustomerNew.jsp" method = "post">	
+		<button type="submit">Existing Customer</button>
+	</form>
 	<br>
-	<br>
-	Contact us through email!!
-	<br>
-    Your name
-    <br>
-    <input type="text" name="cf_name">  
-    <br>  
-    Your e-mail    
-    <br>
-    <input type="text" name="cf_email">
-    <br>    
-    Message
-    <br>    
-    <textarea name="cf_message"></textarea>
-    <br>    
-    <input type="submit" value="Submit">
-    <input type="reset" value="Clear">
-</form>	
+	
+	<form action = "newCustomerNew.jsp" method = "post">
+		<button type="submit">New Customer</button>
+	</form>
+		</div>
 
-           	
+
+             	</div>
             <div class="clear">&nbsp;</div>
         </div>
 <div id="footer">

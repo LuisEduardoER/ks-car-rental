@@ -208,7 +208,7 @@ public class RentCarServlet extends HttpServlet {
 					rentalAgreement.setCreditCardExpiryDate(creditCardExpiry);
 					rentalAgreement.setRentalDate(startRental);
 					rentalAgreement.setReturnDate(endRental);
-					rentalAgreement.setNoOfDays(startRental, endRental);
+					//rentalAgreement.setNoOfDays(startRental, endRental);
 					rentalAgreement.getUtil().open();
 					rentalAgreement.createRentalAgreement();
 				}

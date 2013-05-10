@@ -1,11 +1,14 @@
 package com.njit.cs631.ks.Insurance;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
 import com.njit.cs631.ks.car.Car;
 import com.njit.cs631.ks.car.Class.ClassType;
 import com.njit.cs631.ks.server.Util;
+import java.sql.*;
+import com.mysql.jdbc.PreparedStatement;
 
 public class RentalInsurance extends Insurance{
 	
@@ -21,6 +24,11 @@ public class RentalInsurance extends Insurance{
 	Double PACostPerMonth;
 	Double LICostPerMonth;
 	Util util;
+	
+	/* Shilpa Here */
+	String selectedCarClass;
+	/* Shilpa Here */
+	 
 	
 	public RentalInsurance(){
 		
@@ -131,7 +139,16 @@ public class RentalInsurance extends Insurance{
 	public void setCarClass(ClassType carClass) {
 		this.carClass = carClass;
 	}
-
+	
+	/* Shilpa Here */
+	public void setSelectedCarClass(String strCarClass) {
+		this.selectedCarClass = strCarClass;
+	}
+	
+	public String getSelectedCarClass() {
+		return selectedCarClass;
+	}
+	/* Shilpa Here */
 
 	public Util getUtil() {
 		return util;
@@ -140,6 +157,42 @@ public class RentalInsurance extends Insurance{
 
 	public void setUtil(Util util) {
 		this.util = util;
+	}
+	
+	public String GetInsPolicyNum(String classType)
+	{
+		Connection con = null;
+		String url = "jdbc:mysql://sql2.njit.edu:3306/";
+		String dbName = "ss984";
+		String driver = "com.mysql.jdbc.Driver";
+		String userName = "ss984";
+		String password = "xtlHyPSEC";
+		String rVal = "";
+		try
+		{
+			Class.forName(driver).newInstance();
+			con = DriverManager.getConnection(url + dbName, userName, password);
+			 String queryClass = "select InsPolicyNo from RentalInsurance" + 
+			" where RIClassType = '" + classType.trim() + "'";
+				PreparedStatement st = (PreparedStatement) con
+						.prepareStatement(queryClass);
+				ResultSet rs = st.executeQuery();
+				while(rs.next())
+				{
+					rVal = rs.getString(1);
+				}
+									
+			
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex.toString());			
+		}
+		finally
+		{
+			return rVal;
+		}
+			 
 	}
 	
 }
