@@ -145,7 +145,7 @@ scope="session">
 		</div>
 	</form> -->
 	
-<form ACTION="rentalagreement.jsp">
+<form ACTION="rentalAgreementNew.jsp">
 <input type="checkbox" name="id" value="PE"> PersonalEffect <BR>
 <input type="checkbox" name="id" value="PA"> PersonalAccident <BR>
 <input type="checkbox" name="id" value="LI"> Liability <BR>
