@@ -84,7 +84,7 @@ scope="session">
 	%>
 	
 	<br>
-	<form action="rentalagreement.jsp" method="post">
+	<form action="rentalAgreementNew.jsp" method="post">
 		<button type="submit">Rent</button>
 	</form>
 	<br>
