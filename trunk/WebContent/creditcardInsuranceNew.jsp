@@ -31,7 +31,7 @@
 <div id="main">
 	<div class="content">
         	<div class="main_top">
-            	<h1>Credit Card Insurance</h1>
+            	<h1>Rent a Car</h1>
             </div>
             
            	<div class="main_body">

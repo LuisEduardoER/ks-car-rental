@@ -35,7 +35,7 @@
 	<div class="content">
         		<br><br>
 	
-<form action="FaultReport.jsp" method="post">	
+<form action="FaultReportNew.jsp" method="post">	
 <table border="1" bordercolor="#660000" style="background-color:#A4A2A2" width="500" cellpadding="3" cellspacing="3" >
 <thead>
     <tr>
@@ -100,8 +100,7 @@ e.printStackTrace();
 }
 %>
 </table>
-<input type="submit" value="Submit" class="submit50">
-</form>
+
 <br/><br/>
 <div align="left" style="height:450px;width:500px;border:1px solid #ccc;font:14px/18px Georgia, Garamond, Serif; background-color:#CCCC99; overflow:auto;">
 General Rental Information
@@ -155,10 +154,9 @@ EUR 50,000.- for invalidity,
 EUR 25,000.- for decease,
 EUR 1,000.- for medical costs. 
 </div>
-		
+		<input type="submit" value="Submit" class="submit50">
+</form>
 		</div>
-
-
              	</div>
             <div class="clear">&nbsp;</div>
         </div>
