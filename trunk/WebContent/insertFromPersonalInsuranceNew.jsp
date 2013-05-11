@@ -77,6 +77,9 @@ scope="session">
 		if (noOfRowsAffected == 1)
 			out.println("Thank you for the details.. Do you want to confirm the rental?? ");
 		}
+		catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException mySqlEx){
+			out.println("Thank you for the details.. Do you want to confirm the rental?? ");
+		}
 		catch(Exception ex)
 		{
 			out.println(ex.toString());

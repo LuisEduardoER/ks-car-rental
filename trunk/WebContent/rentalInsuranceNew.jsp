@@ -9,10 +9,7 @@ scope="session">
 
 <jsp:useBean id="rentalInsPolicyNum" class="com.njit.cs631.ks.Insurance.RentalInsurance"
 scope="session">
-<jsp:setProperty name="rentalInsPolicyNum" property="insPolicyNo" value=
-'<%= 
-(rentalInsPolicyNum.GetInsPolicyNum(selectedClassType.getSelectedCarClass().trim())).trim()
-%>' />
+<jsp:setProperty name="rentalInsPolicyNum" property="insPolicyNo" value="<%=(rentalInsPolicyNum.GetInsPolicyNum(selectedClassType.getSelectedCarClass().trim())).trim()%>" />
 </jsp:useBean>
 
 <jsp:useBean id="insurance" class="com.njit.cs631.ks.Insurance.Insurance"
