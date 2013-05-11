@@ -11,18 +11,37 @@
 
 	
 <h1>Please enter the following details</h1>
+<table>
 <FORM action="insertFromCreditCardInsurance.jsp" method="post">
-		<P>
-			
-			<LABEL for="InsPolicyNo"> InsurancePolicyNo </LABEL> 
-			<INPUT type="text" name="CreditCardNo"> <br> <BR> 
+		
+		<tr>
+			<td>	
+			<LABEL for="InsPolicyNo"> InsurancePolicyNo </LABEL> </td>
+			<td>
+			<INPUT type="text" name="CreditCardNo"> 
+			</td>
+		</tr>
+		<tr>
+		<td>
 			<LABEL for="InsProviderName"> InsuranceProviderName </LABEL> 
-			<INPUT type="text" name="InsProviderName"><BR>
-			<LABEL for="ServicePhoneNo"> Service Phone No </LABEL> 
-			<INPUT type="text" name="ServicePhoneNo"> <br> <BR>
-			<br> <INPUT type="submit" value="Submit">
-		</P>
+			</td>
+			<td>
+			<INPUT type="text" name="InsProviderName"></td>
+		</tr>
+		<tr>
+			<td>
+			<LABEL for="ServicePhoneNo"> Service Phone No </LABEL></td>
+			
+			<td> 
+			<INPUT type="text" name="ServicePhoneNo"> 
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+			<INPUT type="submit" value="Submit">
+		</td>
+		</tr>
 	</FORM>
-
+</table>
 </body>
 </html>
