@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="CSS/style.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <title>KS Car Rental</title>
 </head>
 
@@ -34,7 +34,7 @@
 <div id="main">
 	<div class="content">
         	<div class="main_top">
-            	<h1>Home</h1>
+            	<h1>Return a Car</h1>
             </div>
             
            	<div class="main_body">
@@ -45,7 +45,7 @@
 	Calendar now= Calendar.getInstance();
 	%>
 	<div id="form_container">
-<form id="form_624877" class="appnitro"  method="post" action="GenerateFaultReport.jsp" color="A4A2A2">
+<form id="form_624877" class="appnitro"  method="post" action="GenerateFaultReportNew.jsp" color="A4A2A2">
 			<ul >
 			
 					<li id="li_1" >

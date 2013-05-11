@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="CSS/style.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <title>KS Car Rental</title>
 </head>
 
@@ -34,7 +34,7 @@
 <div id="main">
 	<div class="content">
         	<div class="main_top">
-            	<h1>Home</h1>
+            	<h1>Return a Car</h1>
             </div>
             
            	<div class="main_body">
@@ -95,10 +95,20 @@ if(results.next()){
 Generated Report ID for your reference is:
 </span>
 <span style="font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;text-decoration:none;text-transform:none;color:990000;">
-<%out.println(results.getString("ReportID"));%>
+<%out.println(results.getString("ReportID"));
+statement = (PreparedStatement)connection.prepareStatement("Update Car set Available=1 where LicenseState = (select LicenseState from RentalAgreement where AgreementNo = ?) and LicenseNo = (select LicenseNo from RentalAgreement where AgreementNo = ?)");
+
+statement.setString(1,agreementNo);
+statement.setString(2,agreementNo);
+int rowsAffected = statement.executeUpdate();
+statement = (PreparedStatement)connection.prepareStatement("Update RentalAgreement set Returned=1 where AgreementNo = ?");
+statement.setString(1,agreementNo);
+int rowsAffected1 = statement.executeUpdate();
+
+%>
 </span> 
 <br><br>
-<input type="button" value="OK" onClick = "../home.html"/>
+<input type="button" value="OK" onClick = "http://localhost:8080/CarRental/home.html"/>
 <% }
 }
 }}catch (ClassNotFoundException e) {
