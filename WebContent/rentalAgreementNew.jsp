@@ -79,12 +79,20 @@
             </div>
             
            	<div class="main_body">
+           	<table>
 		<form action="finalPage.jsp">
-		<label for="ccno"> Enter your Credit Card# </label> <input type="text"
-			name="creditCardNum"><BR> <br></br> <label for="cced">
-			Expiry Date </label> <input type="text" name="creditCardExDate"><BR>
-		<input type="submit" value="Submit">
+		<tr><td>
+		<label for="ccno"> Enter your Credit Card# </label></td>
+		<td><input type="text" name="creditCardNum"></input></td>
+		</tr>
+			<BR> <br></br> 
+			<tr><td><label for="cced">
+			Expiry Date </label> </td><td><input type="text" name="creditCardExDate"></input></td></tr>
+			<BR>
+			<tr><td align="center">
+		<input type="submit" value="Submit"></input></td></tr>
 	</form>
+	</table>
 
 	<%
 				Connection con = null;
