@@ -36,16 +36,32 @@
             
            	<div class="main_body">
 <h1>Please enter the following details</h1>
-
+<table>
 	<FORM action="insertFromPersonalInsuranceNew.jsp" method="post">
-		<P>
-			<LABEL for="InsPolicyNo"> InsurancePolicyNo </LABEL> 
-			<INPUT type="text" name="InsPolicyNo"> <br> <BR> 
+		<tr>
+			<td><LABEL for="InsPolicyNo"> InsurancePolicyNo </LABEL> </td>
+			<td><INPUT type="text" name="InsPolicyNo"> </td>
+			
+		</tr>
+		<br> <BR> 
+			</BR>
+			</br> 
+		<tr>
+			<td>
 			<LABEL for="InsProviderName"> InsuranceProviderName </LABEL> 
-			<INPUT type="text" name="InsProviderName"><BR>
-			<br> <INPUT type="submit" value="Submit">
-		</P>
+			</td>
+			<td>
+			<INPUT type="text" name="InsProviderName">
+			</td>
+		</tr>
+		<tr>
+		<td align="center">
+		<INPUT type="submit" value="Submit">
+		</td>
+		</tr>
+		
 	</FORM>
+</table>
 		</div>
 
 
