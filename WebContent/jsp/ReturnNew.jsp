@@ -102,8 +102,8 @@ e.printStackTrace();
 </table>
 
 <br/><br/>
-<div align="left" style="height:450px;width:500px;border:1px solid #ccc;font:14px/18px Georgia, Garamond, Serif; background-color:#CCCC99; overflow:auto;">
-General Rental Information
+<div align="left" style="height:450px;width:500px;border:1px solid #ccc;font:14px/18px Georgia, Garamond, Serif; background-color:#58ACFA; overflow:auto;">
+General Rental and Return Agreement Instructions and Guidelines
 The renter and the driver have to be in possession of a valid driving licence.
 Driving licences from non-EU countries (except Switzerland) are accepted if:
 a) no visa has been entered in the passport. 
