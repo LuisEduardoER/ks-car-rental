@@ -1,8 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<%@ page import="java.sql.*" %> 
+<%@ page import="java.io.*" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="CSS/style.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 <title>KS Car Rental</title>
 </head>
 
@@ -28,20 +33,76 @@
   
 <div id="main">
 	<div class="content">
-        	<br><br>
-<form action="jsp/ReturnNew.jsp" method="post">
-<span style="font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;text-decoration:none;text-transform:none;color:990000;">
-Enter your phone number here to pull up your rental records
-</span>
-<br><br>
-<style type="text/css">
-textarea.html-text-box {background-color:FFFFCC;background-image:url(http://);background-repeat:no-repeat;background-attachment:fixed;border-width:1;border-style:solid;border-color:cccccc;font-family:Arial;font-size:10pt;color:000000;}
-textarea.html-text-box {background-color:FFFFFF;font-family:Arial;font-size:10pt;color:993300;}
-</style>
-<form method="post" action="/jsp/Return.jsp">
-<br>
-<textarea name="primaryPhoneNo" cols="20" rows="1" class="html-text-box" on></textarea>
-<br><br>
+        		<br><br>
+	
+<form action="FaultReport.jsp" method="post">	
+<table border="1" bordercolor="#660000" style="background-color:#A4A2A2" width="500" cellpadding="3" cellspacing="3" >
+<thead>
+    <tr>
+      <th>AgreementNumber</th>
+      <th>RentalDate</th>
+   	<th>ReturnDate</th>
+   	<th>FirstName</th>
+    <th>LastName</th>
+   </tr>
+<%
+
+String phone = null;
+//declare a connection by using Connection interface 
+Connection connection = null; 
+ResultSet results = null;
+try {
+phone = (String)request.getParameter("primaryPhoneNo");
+/* Create string of connection url within specified format with machine name, 
+port number and database name. Here machine name id localhost and database name 
+is usermaster. */ 
+String connectionURL = "jdbc:mysql://sql2.njit.edu:3306/ss984"; 
+PreparedStatement statement = null;
+// Load JBBC driver "com.mysql.jdbc.Driver". 
+Class.forName("com.mysql.jdbc.Driver").newInstance(); 
+/* Create a connection by using getConnection() method that takes parameters of 
+string type connection url, user name and password to connect to database. */ 
+connection = DriverManager.getConnection(connectionURL, "ss984", "xtlHyPSEC");
+// check weather connection is established or not by isClosed() method 
+statement = (PreparedStatement)connection.prepareStatement("select * from RentalAgreement R,Customer C where C.SSN= R.SSN and C.PrimaryPhoneNo =? and R.Returned = false" );
+if(!connection.isClosed()){
+statement.setString(1, phone);
+results = statement.executeQuery();
+}
+while (results.next()) {%>
+<TR>
+<TD> <%=results.getInt("AgreementNo")%> </TD>
+<TD> <%=results.getString("RentalDate")%></TD>
+<TD> <%=results.getString("ReturnDate")%></TD>
+<TD> <%=results.getString("FName")%></TD>
+<TD> <%=results.getString("LName")%></TD>
+<TD><input type="checkbox" name="Return" value="<%=results.getInt(1)%>"></TD></TR>
+<%
+}
+}
+catch (ClassNotFoundException e) {
+System.out.println("Oops I can't find the JDBC Driver!");
+e.printStackTrace();
+}
+catch (SQLException e) {
+System.out.println("There was a problem with the SQL!");
+e.printStackTrace();
+}
+finally {
+if (connection != null) {
+try {
+	connection.close();
+}
+catch(Exception e){
+e.printStackTrace();
+}
+}
+}
+%>
+</table>
+<input type="submit" value="Submit" class="submit50">
+</form>
+<br/><br/>
 <div align="left" style="height:450px;width:500px;border:1px solid #ccc;font:14px/18px Georgia, Garamond, Serif; background-color:#CCCC99; overflow:auto;">
 General Rental Information
 The renter and the driver have to be in possession of a valid driving licence.
@@ -54,7 +115,7 @@ Special rental information by booking of Prepaid rates
 Changing booking
 A booking can be changed up to 48 hours before the start of the rental (on availability) in return for an alteration charge of EUR 20.00. Any payment already made towards the rental will not be refunded; nor shall any differential amount be refunded if this alteration leads to a lesser rental cost.
 Cancellation
-A booking can be cancelled before the start of the rental. In the event of cancellation, the payment already made towards the rental will be paid back subject to a cancellation charge. The cancellation charge shall be the amount of the rental charge ( including any extras and charges) for a maximum of 3 rental days. Cancellations can be made online (www.sixt.de/meinsixt/)or in writing and must be addressed to: Sixt GmbH & Co. Autovermietung KG, Trelleborger Stra√üe 9, D-18107 Rostock, Fax: +49(0)381/80 70 55 67, E-Mail: reservierung@sixt.de
+A booking can be cancelled before the start of the rental. In the event of cancellation, the payment already made towards the rental will be paid back subject to a cancellation charge. The cancellation charge shall be the amount of the rental charge ( including any extras and charges) for a maximum of 3 rental days. Cancellations can be made online (www.sixt.de/meinsixt/)or in writing and must be addressed to: Sixt GmbH & Co. Autovermietung KG, Trelleborger Straﬂe 9, D-18107 Rostock, Fax: +49(0)381/80 70 55 67, E-Mail: reservierung@sixt.de
 No-show
 In the event that the booked vehicle is not collected or not collected at the agreed time, the rental charge already paid shall be withheld in full.
 Age Restrictions
@@ -94,10 +155,7 @@ EUR 50,000.- for invalidity,
 EUR 25,000.- for decease,
 EUR 1,000.- for medical costs. 
 </div>
-<br><input type="submit" value="Submit" class="html-text-box">
-
-<input type="reset" value="Reset" class="html-text-box"></form>
-		</div>
+		
 		</div>
 
 

@@ -88,7 +88,7 @@ scope="session">
 			<TH>City</TH>
 			<TH>State</TH>
 			<TH>Zip</TH>
-			<TH>Discount</TH>
+			
 		</TR>
 		<TR>
 			<TD> <%= result.getString(1) %></TD>
@@ -100,7 +100,7 @@ scope="session">
 			<TD> <%= result.getString(7) %></TD>
 			<TD> <%= result.getString(8) %></TD>
 			<TD> <%= result.getString(9) %></TD>
-			<TD> <%= result.getString(10) %></TD>			
+						
 		</TR>
 	</TABLE>
 

@@ -37,7 +37,7 @@
            	<div class="main_body">
 <h1>Please enter the following details</h1>
 
-	<FORM action="insertCustomer.jsp" method="post">
+	<FORM action="insertCustomerNew.jsp" method="post">
 		<P>
 			<LABEL for="FName"> FirstName </LABEL> <INPUT type="text"
 				name="FirstName"> <br> <BR> <LABEL for="LName">

@@ -268,7 +268,7 @@ public class Util {
   }
   
   
-  public double getRentalPriceForRI(boolean pe, boolean pa, boolean li, String classType, long rentalDuration, double rentalPricePerDay)
+  public double getRentalPrice(boolean pe, boolean pa, boolean li, String classType, long rentalDuration, double rentalPricePerDay)
   {
 	  double rentalPx = 0.0;
 	  double discount = 0;

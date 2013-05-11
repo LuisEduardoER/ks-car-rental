@@ -31,14 +31,17 @@
 
 <jsp:useBean id="insPolicyNum"
 	class="com.njit.cs631.ks.Insurance.PersonalInsurance" scope="session">
+	<jsp:getProperty name="insPolicyNum" property="insPolicyNo" />
 </jsp:useBean>
 
 <jsp:useBean id="rentalInsPolicyNum"
 	class="com.njit.cs631.ks.Insurance.RentalInsurance" scope="session">
+	<jsp:getProperty name="rentalInsPolicyNum" property="insPolicyNo" />
 </jsp:useBean>
 
 <jsp:useBean id="ccInsPolicyNum"
 	class="com.njit.cs631.ks.Insurance.CreditCardInsurance" scope="session">
+	<jsp:getProperty name="ccInsPolicyNum" property="insPolicyNo" />
 </jsp:useBean>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -98,15 +101,15 @@
 					
 					if(insurance.getInsuranceType() == "PersonalInsurance")						
 						%>
-	<jsp:getProperty name="insPolicyNum" property="insPolicyNo" />
+	
 	<%
 						if(insurance.getInsuranceType() == "RentalInsurance")							
 							%>
-	<jsp:getProperty name="rentalInsPolicyNum" property="insPolicyNo" />
+	
 	<%
 						if(insurance.getInsuranceType() == "CCInsurance")							
 							%>
-	<jsp:getProperty name="ccInsPolicyNum" property="insPolicyNo" />
+	
 	<%
 		String policyNum = "";
 		java.util.Date startRental = null;
@@ -118,8 +121,32 @@
 		double rentalPrice = 0;
 		boolean returned = false;
 		String select[] = new String[]{};
+		rentalDuration =
+				Util.calculateDays(rentalPeriod.getRentalDateStr(),
+				rentalPeriod.getReturnDateStr()) + 1;
+				pricePerDay = 0;
+				String queryPricePerDay = "select RentalChargePerDay from Class where ClassType = '" + classType + "'";
+				PreparedStatement stt = (PreparedStatement) con
+				.prepareStatement(queryPricePerDay);
+				ResultSet rst = stt.executeQuery();
+				while (rst.next())
+				{
+				pricePerDay = rst.getDouble(1);
+				}
+				if(rentalDuration > Util.numOfDaysInMonth)
+				discount = Util.monthsRentDiscount;
+				else if(rentalDuration > Util.numOfDaysInWeek)
+				discount = Util.weeksRentDiscount;
+				else
+				discount = Util.daysRentDiscount;
 		if(insurance.getInsuranceType() == "PersonalInsurance")								
+		{
 			policyNum = insPolicyNum.getInsPolicyNo();
+			rentalPrice =
+			inputphonenum.getUtil().getRentalPrice(pe, pa, li, classType,
+			rentalDuration, pricePerDay);
+
+		}
 		else if (insurance.getInsuranceType() == "RentalInsurance") 
 		{
 			policyNum = rentalInsPolicyNum.getInsPolicyNo();
@@ -142,7 +169,7 @@
 			startRental = new SimpleDateFormat("YYYYMMDD").parse(rentalPeriod.getRentalDateStr());
 			endRental = new SimpleDateFormat("YYYYMMDD").parse(rentalPeriod.getReturnDateStr());
 			
-		 	rentalDuration = Util.calculateDays(rentalPeriod.getRentalDateStr(), rentalPeriod.getReturnDateStr()) + 1; //including the day the car is rented.
+		 	/*rentalDuration = Util.calculateDays(rentalPeriod.getRentalDateStr(), rentalPeriod.getReturnDateStr()) + 1; //including the day the car is rented.
 		
 		
 			pricePerDay = 0;
@@ -154,20 +181,27 @@
 			while (rst.next()) 
 			{
 				pricePerDay = rst.getDouble(1);			
-			}
+			}*/
 				
-			rentalPrice = inputphonenum.getUtil().getRentalPriceForRI(pe, pa, li, classType, rentalDuration, pricePerDay);
+			rentalPrice = inputphonenum.getUtil().getRentalPrice(pe, pa, li, classType, rentalDuration, pricePerDay);
 		
-			if(rentalDuration > Util.numOfDaysInMonth)
+			/*if(rentalDuration > Util.numOfDaysInMonth)
 			  discount = Util.monthsRentDiscount;
 		  	else if(rentalDuration > Util.numOfDaysInWeek)
 			  discount = Util.weeksRentDiscount;
 		  	else
-			  discount = Util.daysRentDiscount;
+			  discount = Util.daysRentDiscount;*/
 		}
 		else if (insurance.getInsuranceType() == "CCInsurance")
+		{
 			policyNum = ccInsPolicyNum.getInsPolicyNo();
-
+			pe = false;
+			pa = false;
+			li = false;
+			rentalPrice =
+			inputphonenum.getUtil().getRentalPrice(pe, pa, li, classType,
+			rentalDuration, pricePerDay);
+		}
 			
 		String custPhoneNo = inputphonenum.getPrimaryPhoneNo();
 			
